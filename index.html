@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário de Envio de E-mail</title>
+  <style>
+    /* Reset básico para margens e padding */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Fontes modernas */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap');
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #1a1a2e;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 100vh;
+        padding: 20px;
+        opacity: 0;
+        animation: fadeInPage 1s forwards; /* Animação para a página */
+    }
+
+    h2 {
+        font-family: 'Roboto', sans-serif; /* Fonte moderna */
+        color: #007acc; /* Azul mais escuro */
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        animation: fadeInTitle 1.5s forwards; /* Animação de fade-in no título */
+    }
+
+    form {
+        background: linear-gradient(145deg, #2e2e4a, #232342);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2), -5px -5px 20px rgba(255, 255, 255, 0.1);
+        max-width: 500px;
+        width: 100%;
+        opacity: 0;
+        animation: fadeInForm 1.5s forwards 0.5s; /* Animação do formulário */
+    }
+
+    h1 {
+            font-family: 'Roboto', sans-serif; /* Fonte moderna */
+            color: #007acc; /* Azul mais escuro */
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            animation: fadeInTitle 1.5s forwards; /* Animação de fade-in no título */
+        }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        color: #a0a3bd;
+        font-size: 14px;
+    }
+
+    input[type="text"], input[type="email"], input[type="file"] {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 2px solid #414361;
+        background-color: #1f1f3d;
+        color: #f3f4f6;
+        border-radius: 8px;
+        font-size: 16px;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+
+    input[type="text"]:focus, input[type="email"]:focus, input[type="file"]:focus {
+        border-color: #00d2ff;
+        box-shadow: 0 0 8px #00d2ff;
+    }
+
+    input[type="radio"] {
+        margin-right: 10px;
+        transform: scale(1.2);
+        accent-color: #00d2ff;
+    }
+
+    button {
+        width: 100%;
+        background: linear-gradient(145deg, #00d2ff, #3a7bd5);
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background 0.3s ease;
+        margin-top: 20px;
+    }
+
+    button:hover {
+        background: linear-gradient(145deg, #3a7bd5, #00d2ff);
+    }
+
+    /* Animações */
+    @keyframes fadeInPage {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeInTitle {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInForm {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Footer */
+    footer {
+        margin-top: 40px;
+        font-size: 14px;
+        color: #a0a3bd;
+        text-align: center;
+        opacity: 0;
+        animation: fadeInFooter 1.5s forwards 1.5s; /* Animação para o footer */
+    }
+
+    @keyframes fadeInFooter {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+        form {
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 20px;
+        }
+    }
+
+    /* Organiza os radio buttons na horizontal */
+    .radio-group {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
+    }
+
+    .radio-group label {
+        margin: 0 10px;
+    }
+    
+
+  </style>
+</head>
+<body>
+  <h1>Formulário de Jogo - Cabnave</h1>
+  <form action="/enviar-email" method="POST">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required><br><br>
+
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="empresa">Empresa:</label>
+    <input type="text" id="empresa" name="empresa"><br><br>
+
+    <label>Gênero:</label><br>
+    <div class="radio-group">
+        <label for="masculino">
+            <input type="radio" id="masculino" name="genero" value="masculino" required>
+            Masculino
+        </label>
+        <label for="feminino">
+            <input type="radio" id="feminino" name="genero" value="feminino" required>
+            Feminino
+        </label>
+    </div><br>
+
+    <label>Resultado:</label><br>
+    <div class="radio-group">
+        <label for="venceu">
+            <input type="radio" id="venceu" name="venceu" value="venceu" required>
+            Venceu
+        </label>
+        <label for="naoVenceu">
+            <input type="radio" id="naoVenceu" name="venceu" value="nao venceu" required>
+            Não Venceu
+        </label>
+    </div><br>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <footer>
+    <p>Esta página foi criada pelo Departamento de Informática da CABNAVE, constituído por Rafael Coronel e Herlany Ramos.</p>
+</footer>
+
+</body>
+</html>
