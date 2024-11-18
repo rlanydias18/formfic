@@ -10,6 +10,8 @@ const port = 3000;
 // Middleware para analisar o corpo das requisições POST
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.static('images'));
+
 
 // Configuração do Nodemailer
 const transporter = nodemailer.createTransport({
