@@ -51,15 +51,15 @@
     }
 
     h1 {
-            font-family: 'Roboto', sans-serif; /* Fonte moderna */
-            color: #007acc; /* Azul mais escuro */
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 24px;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
-            opacity: 0;
-            animation: fadeInTitle 1.5s forwards; /* Animação de fade-in no título */
-        }
+        font-family: 'Roboto', sans-serif; /* Fonte moderna */
+        color: #007acc; /* Azul mais escuro */
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        animation: fadeInTitle 1.5s forwards; /* Animação de fade-in no título */
+    }
 
     label {
         display: block;
@@ -108,6 +108,15 @@
 
     button:hover {
         background: linear-gradient(145deg, #3a7bd5, #00d2ff);
+    }
+
+    /* Estilo específico para o botão "Exportar Dados" */
+    #botao-exportar {
+        background: linear-gradient(145deg, #006400, #228B22); /* Gradiente de verde escuro */
+    }
+
+    #botao-exportar:hover {
+        background: linear-gradient(145deg, #228B22, #006400); /* Gradiente invertido ao passar o mouse */
     }
 
     /* Animações */
@@ -180,10 +189,6 @@
         justify-content: space-around;
         margin-bottom: 20px;
     }
-
-    .radio-group label {
-        margin: 0 10px;
-    }
     
 
   </style>
@@ -225,11 +230,31 @@
     </div><br>
 
     <button type="submit">Enviar</button>
+    <button type="button" id="botao-exportar">Exportar Dados</button>
   </form>
 
   <footer>
-    <p>Esta página foi criada pelo Departamento de Informática da CABNAVE, constituído por Rafael Coronel e Herlany Ramos.</p>
+    <p>© 2024 CABNAVE - Esta página foi criada pelo Departamento de Informática da CABNAVE, constituído por Rafael Coronel e Herlany Ramos.</p>
 </footer>
+
+<script>
+    // Função para exportar os dados para um arquivo JSON
+    document.getElementById('botao-exportar').addEventListener('click', () => {
+      fetch('/exportar-dados')
+        .then(response => response.json())
+        .then(data => {
+          const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'dados.json';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        })
+        .catch(error => console.error('Erro ao exportar dados:', error));
+    });
+  </script>
 
 </body>
 </html>
