@@ -11,6 +11,21 @@
         padding: 0;
         box-sizing: border-box;
     }
+    
+    .navbar {
+        width: 100%;
+        background-color: #2e2e4a;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar img {
+        height: 50px;
+    }
 
     /* Fontes modernas */
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap');
@@ -194,6 +209,11 @@
   </style>
 </head>
 <body>
+
+    <div class="navbar">
+        <img src="logoPagina2.png" alt="Logo da CABNAVE">
+      </div>
+
   <h1>Formulário de Jogo - Cabnave</h1>
   <form action="/enviar-email" method="POST">
     <label for="nome">Nome:</label>
