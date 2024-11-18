@@ -1,0 +1,16 @@
+[
+  {
+    "nome": "Rafael Coronel",
+    "email": "rcoronel444@gmail.com",
+    "empresa": "cabnave",
+    "genero": "masculino",
+    "venceu": "venceu"
+  },
+  {
+    "nome": "Rafael Coronel",
+    "email": "rcoronel444@gmail.com",
+    "empresa": "cabnave",
+    "genero": "masculino",
+    "venceu": "nao venceu"
+  }
+]
