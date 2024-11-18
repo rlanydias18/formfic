@@ -12,7 +12,7 @@
         box-sizing: border-box;
     }
 
-    /* Navbar estilizada com o mesmo estilo do formulário */
+    /* Navbar estilizada */
     .navbar {
       display: flex;
       align-items: center;
@@ -25,13 +25,14 @@
     }
 
     .navbar img {
-      max-height: 40px; /* Ajusta o tamanho do logo */
+      max-height: 50px; /* Ajusta o tamanho do logo */
       margin-right: 10px;
     }
 
     .navbar-text {
       font-size: 18px;
       font-weight: bold;
+      color: white;
     }
 
     /* Fontes modernas */
@@ -211,7 +212,6 @@
         justify-content: space-around;
         margin-bottom: 20px;
     }
-    
 
   </style>
 </head>
@@ -220,13 +220,10 @@
 <body>
 
     <div class="navbar">
-        <!-- Logo -->
-        <img src="./images/logo.png" alt="Logo" />
-        <!-- Texto -->
-        <div class="navbar-text">
-          Formulário FIC
-        </div>
-      </div>
+        <!-- Logo e Texto juntos na Navbar -->
+        <img src="./images/logoPagina.png" alt="Logo da Página">
+        <div class="navbar-text">Formulário FIC</div>
+    </div>
 
     <h1></h1>
     <form action="/enviar-email" method="POST">
@@ -267,11 +264,8 @@
       <button type="button" id="botao-exportar">Exportar Dados</button>
     </form>
   
-    <!-- Adiciona a imagem antes do footer -->
-    <img src="./images/logoPagina.png" alt="Logo da Página" style="display: block; margin: 15px auto; margin-left: 18%; margin-top: -5%; max-width: 60%; height: auto;">
-
     <footer>
-      <p style="margin-top: -15%;">© 2024 CABNAVE - Esta página foi criada pelo Departamento de Informática da CABNAVE, constituído por Rafael Coronel e Herlany Ramos.</p>
+      <p>© 2024 CABNAVE - Esta página foi criada pelo Departamento de Informática da CABNAVE, constituído por Rafael Coronel e Herlany Ramos.</p>
     </footer>
   
     <script>
@@ -292,6 +286,6 @@
             .catch(error => console.error('Erro ao exportar dados:', error));
         });
     </script>
-  
-  </body>
+
+</body>
 </html>
