@@ -11,6 +11,8 @@ const port = 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/images', express.static('images'));
+app.use(express.static(path.join(__dirname)));
+
 
 
 // Configuração do Nodemailer
@@ -120,10 +122,10 @@ app.post('/enviar-email', (req, res) => {
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.log('Erro ao enviar e-mail:', error);
-        return res.status(500).send('Erro ao enviar e-mail');
+        return res.status(500).json({ sucesso: false, mensagem: 'Erro ao enviar e-mail' });
       } else {
         console.log('E-mail enviado:', info.response);
-        return res.send('Dados salvos e e-mail enviado com sucesso!');
+        return res.status(200).json({ sucesso: true, mensagem: 'E-mail enviado com sucesso' });
       }
     });
   } else {
